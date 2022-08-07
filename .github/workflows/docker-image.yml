@@ -14,7 +14,7 @@ jobs:
 
     steps:
     - name: Build the Docker image
-      run: docker build . --file Dockerfile.dev --tag docker-react
+      run: docker build -t docker-react -f Dockerfile.dev  .
 
     - name: running a docker image
-      run: docker run docker-react npm run test -- -- coverage
+      run: docker run docker-react npm run test -- --coverage
