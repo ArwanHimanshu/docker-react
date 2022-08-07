@@ -14,6 +14,7 @@ jobs:
 
     steps:
     - name: Build the Docker image
+      uses: actions/checkout@v2
       run: docker build -t docker-react -f Dockerfile.dev  .
 
     - name: running a docker image
