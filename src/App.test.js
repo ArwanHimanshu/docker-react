@@ -12,3 +12,5 @@ test("renders learn react sd", () => {
   const linkElement = screen.getByText(/learn react/i);
   expect(linkElement).toBeInTheDocument();
 });
+
+afterAll(() => setTimeout(() => process.exit(), 1000), 1000);
