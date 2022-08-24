@@ -6,23 +6,17 @@ on:
 
 jobs:
 
-  build:
-
-    runs-on: ubuntu-latest
-
-    steps:
-    - uses : 'actions/checkout@v2'
-    - name: Build the Docker image
-      run: docker build -t docker-react -f Dockerfile.dev .
-
-    - name: running a docker image
-      run: docker run docker-react npm run test -- --watchAll=false
-
   deploy:
     runs-on: ubuntu-latest
 
     steps:
       - uses: actions/checkout@v2
+      - name: Build the Docker image
+        run: docker build -t docker-react -f Dockerfile.dev .
+
+      - name: running a docker image
+        run: docker run docker-react npm run test -- --watchAll=false
+      
 
       - name: Create ZIP deployment package
         run: zip -r deploy_package.zip ./
